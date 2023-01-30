@@ -14,9 +14,9 @@ pageCountry = {}
 for country in soup.find_all('a', {'class':"countryLink"}):
     pageCountry[country.text.strip().upper()] = int(country['country'])
 
-listShow = 'N'
+listShow = ''
 
-listShow = input('Type in Y if you want to see list of avilable - ').upper()
+listShow = input('Type in Y if you want to see list of avilable or type in anything to not see the list - ').upper()
 
 if listShow == 'Y':
   print(headers)
@@ -28,7 +28,5 @@ urlDefault = "https://www.populationpyramid.net/" + str(countryID) + "/2023/"
 
 page = requests.get(urlDefault)
 soup = BeautifulSoup(page.text, 'html.parser')
-
-countryData = {}
 
 print('Approximate number of this country population is - ' + soup.find('span', {'class':"population-number"}).text.strip())
