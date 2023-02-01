@@ -25,3 +25,6 @@ page = requests.get(urlDefault)
 soup = BeautifulSoup(page.text, 'html.parser')
 
 print('Approximate number of this country population is - ' + soup.find('span', {'class':"population-number"}).text.strip())
+
+scripts = soup.find_all("script")
+print(scripts)
