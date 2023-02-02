@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
+import json
 import requests
 import pprint
+
 
 urlDefault = "https://www.populationpyramid.net/world/2023/"
 
@@ -26,5 +28,5 @@ soup = BeautifulSoup(page.text, 'html.parser')
 
 print('Approximate number of this country population is - ' + soup.find('span', {'class':"population-number"}).text.strip())
 
-scripts = soup.find_all("script")
+scripts = soup.find_all("script")[5].text.strip()
 print(scripts)
