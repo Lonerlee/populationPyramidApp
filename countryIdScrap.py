@@ -31,16 +31,16 @@ rawData = r.json()
 print('Population of ' + countryName + ' is around ' + rawData['populationFormatted'])
 print('Male population data:')
 maleInt = 0
-print('AGE RANGE / POPULATION')
+print('AGE RANGE / APROXIMATE POPULATION')
 
 for x in rawData['male']:
-  print(rawData['male'][maleInt]['k'] + ' / ' + str(rawData['male'][maleInt]['v']))
+  print(rawData['male'][maleInt]['k'] + ' / ' + str(int(rawData['male'][maleInt]['v']*1000)))
   maleInt += 1
 
 print('Female population data:')
-print('AGE RANGE / POPULATION')
+print('AGE RANGE / APROXIMATE POPULATION')
 femaleInt = 0
 
 for x in rawData['female']:
-  print(rawData['female'][femaleInt]['k'] + ' / ' + str(rawData['female'][femaleInt]['v']))
+  print(rawData['female'][femaleInt]['k'] + ' / ' + str(int(rawData['female'][femaleInt]['v']*1000)))
   femaleInt += 1
