@@ -3,7 +3,6 @@ import json
 import requests
 import pprint
 
-
 urlDefault = "https://www.populationpyramid.net/world/2023/"
 
 page = requests.get(urlDefault)
@@ -19,14 +18,29 @@ listShow = input('Type in Y if you want to see list of avilable or type in anyth
 if listShow == 'Y':
   pprint.pprint(pageCountry)
 
-countryID = pageCountry[input('Type in country name from the list - ').upper()]
+countryName = input('Type in country name from the list - ').upper()
 
-urlDefault = "https://www.populationpyramid.net/" + str(countryID) + "/2023/"
+countryID = pageCountry[countryName]
 
-page = requests.get(urlDefault)
-soup = BeautifulSoup(page.text, 'html.parser')
+jsonDataURL = "https://www.populationpyramid.net/api/pp/" + str(countryID) + "/2023/"
 
-print('Approximate number of this country population is - ' + soup.find('span', {'class':"population-number"}).text.strip())
+r = requests.get(jsonDataURL)
 
-scripts = soup.find_all("script")[5].text.strip()
-print(scripts)
+rawData = r.json()
+
+print('Population of ' + countryName + ' is around ' + rawData['populationFormatted'])
+print('Male population data:')
+maleInt = 0
+print('AGE RANGE / POPULATION')
+
+for x in rawData['male']:
+  print(rawData['male'][maleInt]['k'] + ' / ' + str(rawData['male'][maleInt]['v']))
+  maleInt += 1
+
+print('Female population data:')
+print('AGE RANGE / POPULATION')
+femaleInt = 0
+
+for x in rawData['female']:
+  print(rawData['female'][femaleInt]['k'] + ' / ' + str(rawData['female'][femaleInt]['v']))
+  femaleInt += 1
