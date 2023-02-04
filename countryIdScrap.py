@@ -34,7 +34,7 @@ maleInt = 0
 print('AGE RANGE / APPROXIMATE POPULATION')
 
 for x in rawData['male']:
-  print(rawData['male'][maleInt]['k'] + ' / ' + str(int(rawData['male'][maleInt]['v']*1000)))
+  print(rawData['male'][maleInt]['k'] + '   /   ' + str(int(rawData['male'][maleInt]['v']*1000)))
   maleInt += 1
 
 print('Female population data:')
@@ -42,5 +42,5 @@ print('AGE RANGE / APPROXIMATE POPULATION')
 femaleInt = 0
 
 for x in rawData['female']:
-  print(rawData['female'][femaleInt]['k'] + ' / ' + str(int(rawData['female'][femaleInt]['v']*1000)))
+  print(rawData['female'][femaleInt]['k'] + '   /   ' + str(int(rawData['female'][femaleInt]['v']*1000)))
   femaleInt += 1
