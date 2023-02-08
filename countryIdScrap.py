@@ -28,7 +28,7 @@ r = requests.get(jsonDataURL)
 
 rawData = r.json()
 
-print('Population of ' + countryName + ' is around ' + rawData['populationFormatted'])
+print('Population of ' + countryName.capitalize() + ' is around ' + rawData['populationFormatted'])
 print('Male population data:')
 maleInt = 0
 print('AGE RANGE / APPROXIMATE POPULATION')
