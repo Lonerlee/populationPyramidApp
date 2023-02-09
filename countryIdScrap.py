@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import json
 import requests
-import pprint
 
 urlDefault = "https://www.populationpyramid.net/world/2023/"
 
