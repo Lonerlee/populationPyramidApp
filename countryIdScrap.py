@@ -22,12 +22,17 @@ countryName = input('Type in country name from the list - ').upper()
 countryID = pageCountry[countryName]
 
 jsonDataURL = "https://www.populationpyramid.net/api/pp/" + str(countryID) + "/2023/"
+jsonWorldData = "https://www.populationpyramid.net/api/pp/900/2023/"
 
 r = requests.get(jsonDataURL)
+rW = requests.get(jsonWorldData)
 
 rawData = r.json()
+rawDataWorld = rW.json()
 
-print('Population of ' + countryName.capitalize() + ' is around ' + rawData['populationFormatted'])
+print(countryName.capitalize() + ' is approximately equal to ' + str(round(float(rawData['population'] / rawDataWorld['population']*100), 2)) + '%' + ' of the worlds population')
+
+print('Population of ' + countryName.capitalize() + ' is around ' + rawData['populationFormatted'] + ' people')
 print('Male population data:')
 maleInt = 0
 print('AGE RANGE / APPROXIMATE POPULATION')
