@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import json
 import requests
+import tkinter as tk
 
 urlDefault = "https://www.populationpyramid.net/world/2023/"
 
@@ -48,3 +49,9 @@ femaleInt = 0
 for x in rawData['female']:
   print(rawData['female'][femaleInt]['k'] + ' / ' + str(int(rawData['female'][femaleInt]['v']*1000)))
   femaleInt += 1
+
+window = tk.Tk()
+
+greeting = tk.Label(text="Hello, Tkinter")
+
+greeting.pack()
