@@ -52,6 +52,10 @@ for x in rawData['female']:
 
 window = tk.Tk()
 
-greeting = tk.Label(text="Hello, Tkinter")
+window.geometry('500x500')
+window.title('GUI Data')
 
-greeting.pack()
+label = tk.Label(window, text='Hello World', font=('Arial', 18))
+label.pack()
+
+window.mainloop()
