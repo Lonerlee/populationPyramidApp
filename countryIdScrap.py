@@ -49,13 +49,3 @@ femaleInt = 0
 for x in rawData['female']:
   print(rawData['female'][femaleInt]['k'] + ' / ' + str(int(rawData['female'][femaleInt]['v']*1000)))
   femaleInt += 1
-
-window = tk.Tk()
-
-window.geometry('500x500')
-window.title('GUI Data')
-
-label = tk.Label(window, text='Hello World', font=('Arial', 18))
-label.pack()
-
-window.mainloop()
