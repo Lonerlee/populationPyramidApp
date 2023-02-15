@@ -31,19 +31,19 @@ rW = requests.get(jsonWorldData)
 rawData = r.json()
 rawDataWorld = rW.json()
 
-print(countryName.capitalize() + ' is approximately equal to ' + str(round(float(rawData['population'] / rawDataWorld['population']*100), 2)) + '%' + ' of the worlds population')
+print(countryName.capitalize() + ' is approximately a ' + str(round(float(rawData['population'] / rawDataWorld['population']*100), 2)) + '%' + ' of the worlds population')
 
 print('Population of ' + countryName.capitalize() + ' is around ' + rawData['populationFormatted'] + ' people')
 print('Male population data:')
 maleInt = 0
-print('AGE RANGE | APPROXIMATE POPULATION')
+print('AGE RANGE | APPROX. POPULATION')
 
 for x in rawData['male']:
   print(rawData['male'][maleInt]['k'] + ' | ' + str(int(rawData['male'][maleInt]['v']*1000)))
   maleInt += 1
 
 print('Female population data:')
-print('AGE RANGE | APPROXIMATE POPULATION')
+print('AGE RANGE | APPROX. POPULATION')
 femaleInt = 0
 
 for x in rawData['female']:
