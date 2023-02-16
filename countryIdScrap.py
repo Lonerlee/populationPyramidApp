@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import json
 import requests
 import tkinter as tk
+import pprint
 
 urlDefault = "https://www.populationpyramid.net/world/2023/"
 
@@ -35,11 +36,14 @@ print(countryName.capitalize() + ' is approximately a ' + str(round(float(rawDat
 
 print('Population of ' + countryName.capitalize() + ' is around ' + rawData['populationFormatted'] + ' people')
 print('Male population data:')
+maleTotal = 0
+femaleTotal = 0
 maleInt = 0
 print('AGE RANGE | APPROX. POPULATION')
 
 for x in rawData['male']:
   print(rawData['male'][maleInt]['k'] + ' | ' + str(int(rawData['male'][maleInt]['v']*1000)))
+  maleTotal += rawData['male'][maleInt]['v']
   maleInt += 1
 
 print('Female population data:')
@@ -48,4 +52,8 @@ femaleInt = 0
 
 for x in rawData['female']:
   print(rawData['female'][femaleInt]['k'] + ' | ' + str(int(rawData['female'][femaleInt]['v']*1000)))
+  femaleTotal += rawData['female'][femaleInt]['v']
   femaleInt += 1
+
+print('There is around ' + str(int(maleTotal)*1000) + ' males in ' + countryName.capitalize() + ' and they make approx. ' + str(round(float(maleTotal / (maleTotal + femaleTotal) * 100), 2)) + '%' + ' of the population')
+print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + countryName.capitalize() + ' and they make approx. ' + str(round(float(femaleTotal / (maleTotal + femaleTotal) * 100), 2)) + '%' + ' of the population')
