@@ -55,5 +55,8 @@ for x in rawData['female']:
   femaleTotal += rawData['female'][femaleInt]['v']
   femaleInt += 1
 
-print('There is around ' + str(int(maleTotal)*1000) + ' males in ' + countryName.capitalize() + ' and they make approx. ' + str(round(float(maleTotal / (maleTotal + femaleTotal) * 100), 2)) + '%' + ' of the population')
-print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + countryName.capitalize() + ' and they make approx. ' + str(round(float(femaleTotal / (maleTotal + femaleTotal) * 100), 2)) + '%' + ' of the population')
+malePrc = round(float(maleTotal / (maleTotal + femaleTotal) * 100), 2)
+femalePrc = round(float(femaleTotal / (maleTotal + femaleTotal) * 100), 2)
+
+print('There is around ' + str(int(maleTotal)*1000) + ' males in ' + countryName.capitalize() + ' and they make approximately ' + str(malePrc) + '%' + ' of the population')
+print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + countryName.capitalize() + ' and they make approximately ' + str(femalePrc) + '%' + ' of the population')
