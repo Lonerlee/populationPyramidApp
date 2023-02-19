@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup
-import json
 import requests
-import tkinter as tk
 import pprint
 
 urlDefault = "https://www.populationpyramid.net/world/2023/"
@@ -39,24 +37,19 @@ print('Population of ' + countryName.capitalize() + ' is around ' + rawData['pop
 maleTotal = 0
 femaleTotal = 0
 
-maleInt = 0
-femaleInt = 0
-
 print('Male population data:')
 print('AGE RANGE | APPROX. POPULATION')
 
-for x in rawData['male']:
-  print(rawData['male'][maleInt]['k'] + ' | ' + str(int(rawData['male'][maleInt]['v']*1000)))
-  maleTotal += rawData['male'][maleInt]['v']
-  maleInt += 1
+for maleCount in rawData['male']:
+  print(maleCount['k'] + ' | ' + str(int(maleCount['v']*1000)))
+  maleTotal += maleCount['v']
 
 print('Female population data:')
 print('AGE RANGE | APPROX. POPULATION')
 
-for x in rawData['female']:
-  print(rawData['female'][femaleInt]['k'] + ' | ' + str(int(rawData['female'][femaleInt]['v']*1000)))
-  femaleTotal += rawData['female'][femaleInt]['v']
-  femaleInt += 1
+for femaleCount in rawData['female']:
+  print(femaleCount['k'] + ' | ' + str(int(femaleCount['v']*1000)))
+  femaleTotal += femaleCount['v']
 
 malePrc = round(float(maleTotal / (maleTotal + femaleTotal) * 100), 2)
 femalePrc = round(float(femaleTotal / (maleTotal + femaleTotal) * 100), 2)
