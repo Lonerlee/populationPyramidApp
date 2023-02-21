@@ -1,3 +1,4 @@
-from populationData import getCountryList, getCountryID
+from countryIdScrap import *
+import tkinter as tk
 
-print(getCountryID('poLand'))
+window = tk.Tk()
