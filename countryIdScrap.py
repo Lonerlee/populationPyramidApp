@@ -1,4 +1,5 @@
 from populationData import *
+import matplotlib.pyplot as plt
 
 pageCountry = getCountryList()
 
@@ -40,3 +41,18 @@ femalePrc = round(float(femaleTotal / (maleTotal + femaleTotal) * 100), 2)
 
 print('There is around ' + str(int(maleTotal)*1000) + ' males in ' + countryName.capitalize() + ' and they make approximately ' + str(malePrc) + '%' + ' of the population')
 print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + countryName.capitalize() + ' and they make approximately ' + str(femalePrc) + '%' + ' of the population')
+
+fig, ax = plt.subplots()
+
+prc = [str(malePrc) + '%', str(femalePrc) + '%']
+counts = [malePrc, femalePrc]
+bar_labels = ['Males', 'Females']
+bar_colors = ['tab:blue', 'tab:pink']
+
+ax.bar(prc, counts, label=bar_labels, color=bar_colors)
+
+ax.set_ylabel('%')
+ax.set_title('Percentage of genders in ' + countryName.capitalize())
+ax.legend(title='Genders color')
+
+plt.show()
