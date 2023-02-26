@@ -47,11 +47,11 @@ fig, ax = plt.subplots()
 prc = [str(malePrc) + '%', str(femalePrc) + '%']
 counts = [malePrc, femalePrc]
 bar_labels = ['Males', 'Females']
-bar_colors = ['tab:blue', 'tab:pink']
+bar_colors = ['tab:red', 'tab:pink']
 
 ax.bar(prc, counts, label=bar_labels, color=bar_colors)
 
-ax.set_ylabel('%')
+ax.set_ylabel('% percentage')
 ax.set_title('Percentage of genders in ' + countryName.capitalize())
 ax.legend(title='Genders color')
 
