@@ -36,7 +36,7 @@ print('AGE RANGE | APPROX. POPULATION')
 
 for maleCount in rawData['male']:
   print(str(maleCount) + ' ' + maleCount['k'] + ' | ' + str(int(maleCount['v']*1000)))
-  xd['Male'][count] = int(0-(maleCount['v']*1000))
+  xd['Male'][count] = int(maleCount['v']*1000)
   maleTotal += maleCount['v']
   count += 1
 
@@ -59,12 +59,23 @@ print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + country
 
 df = pd.DataFrame(xd)
 
-AgeClass = ['100+','95-99','90-94','85-89','80-84','75-79','70-74','65-69','60-64','55-59','50-54','45-49','40-44','35-39','30-34','25-29','20-24','15-19','10-14','5-9','0-4']
+y = range(0, len(df))
+x_male = df['Male']
+x_female = df['Female']
 
-bar_plot = sns.barplot(x='Male', y='Age', data=df, order=AgeClass)
+fig, axes = plt.subplots(ncols=2, sharey=True, figsize=(9, 6))
 
-bar_plot = sns.barplot(x='Female', y='Age', data=df, order=AgeClass)
+fig.patch.set_facecolor('xkcd:silver')
+plt.figtext(.5,.94,"Population Pyramid of " + countryName.capitalize(), fontsize=15, ha='center')
 
-bar_plot.set(xlabel="Population (hundreds of millions)", ylabel="Age-Group", title = "Population Pyramid of " + countryName.capitalize())
+axes[0].barh(y, x_male, align='center', color='mediumblue')
+axes[0].set(title='Males')
+axes[1].barh(y, x_female, align='center', color='fuchsia')
+axes[1].set(title='Females')
+
+axes[1].grid()
+axes[0].set(yticks=y, yticklabels=df['Age'])
+axes[0].invert_xaxis()
+axes[0].grid()
 
 plt.show()
