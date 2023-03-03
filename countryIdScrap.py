@@ -36,7 +36,7 @@ print('AGE RANGE | APPROX. POPULATION')
 
 for maleCount in rawData['male']:
   print(str(maleCount) + ' ' + maleCount['k'] + ' | ' + str(int(maleCount['v']*1000)))
-  xd['Male'][count] = int(maleCount['v']*1000)
+  xd['Male'][count] = int(0-maleCount['v']*1000)
   maleTotal += maleCount['v']
   count += 1
 
@@ -59,23 +59,14 @@ print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + country
 
 df = pd.DataFrame(xd)
 
-y = range(0, len(df))
-x_male = df['Male']
-x_female = df['Female']
+x = np.array(xd['Age'])
+y = np.array(xd['Male'])
 
-fig, axes = plt.subplots(ncols=2, sharey=True, figsize=(9, 6))
+plt.barh(x, y)
 
-fig.patch.set_facecolor('xkcd:silver')
-plt.figtext(.5,.94,"Population Pyramid of " + countryName.capitalize(), fontsize=15, ha='center')
+x = np.array(xd['Age'])
+y = np.array(xd['Female'])
 
-axes[0].barh(y, x_male, align='center', color='mediumblue')
-axes[0].set(title='Males')
-axes[1].barh(y, x_female, align='center', color='fuchsia')
-axes[1].set(title='Females')
-
-axes[1].grid()
-axes[0].set(yticks=y, yticklabels=df['Age'])
-axes[0].invert_xaxis()
-axes[0].grid()
+plt.barh(x, y)
 
 plt.show()
