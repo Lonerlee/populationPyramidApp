@@ -64,10 +64,18 @@ plt.title("Population Pyramid Of " + countryName)
 x = np.array(xd['Age'])
 y = np.array(xd['Male'])
 
+for index, value in enumerate(y):
+    plt.text(value, index,
+             str(value))
+
 plt.barh(x, y, color = "blue")
 
 x = np.array(xd['Age'])
 y = np.array(xd['Female'])
+
+for index, value in enumerate(y):
+    plt.text(value, index,
+             str(value))
 
 plt.barh(x, y, color = "pink")
 
