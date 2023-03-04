@@ -35,7 +35,7 @@ print('Male population data:')
 print('AGE RANGE | APPROX. POPULATION')
 
 for maleCount in rawData['male']:
-  print(str(maleCount) + ' ' + maleCount['k'] + ' | ' + str(int(maleCount['v']*1000)))
+  print(maleCount['k'] + ' | ' + str(int(maleCount['v']*1000)))
   xd['Male'][count] = int(0-maleCount['v']*1000)
   maleTotal += maleCount['v']
   count += 1
@@ -59,14 +59,19 @@ print('There is around ' + str(int(femaleTotal)*1000) + ' females in ' + country
 
 df = pd.DataFrame(xd)
 
+plt.title("Population Pyramid Of " + countryName)
+
 x = np.array(xd['Age'])
 y = np.array(xd['Male'])
 
-plt.barh(x, y)
+plt.barh(x, y, color = "blue")
 
 x = np.array(xd['Age'])
 y = np.array(xd['Female'])
 
-plt.barh(x, y)
+plt.barh(x, y, color = "pink")
+
+plt.xlabel("<--- Number Of Males | Number Of Females--->")
+plt.ylabel("Age Range")
 
 plt.show()
