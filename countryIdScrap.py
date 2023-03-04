@@ -2,7 +2,7 @@ from populationData import *
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 
 pageCountry = getCountryList()
 
@@ -65,8 +65,7 @@ x = np.array(xd['Age'])
 y = np.array(xd['Male'])
 
 for index, value in enumerate(y):
-    plt.text(value, index,
-             str(value))
+    plt.text(value, index, str(value), ha="right")
 
 plt.barh(x, y, color = "blue")
 
@@ -74,8 +73,7 @@ x = np.array(xd['Age'])
 y = np.array(xd['Female'])
 
 for index, value in enumerate(y):
-    plt.text(value, index,
-             str(value))
+    plt.text(value, index, str(value))
 
 plt.barh(x, y, color = "pink")
 
