@@ -12,10 +12,11 @@ def show():
   plt.close('all')
   pageCountry = clicked.get()
   createDataVisuals = showData(pageCountry)
-  createDataVisuals.start()
+  createDataVisuals.calculations()
   label.config( text = 'Region name: ' + clicked.get() )
   labelMale.config( text = createDataVisuals.printMale() )
   labelFemale.config( text = createDataVisuals.printFemale() )
+  createDataVisuals.start()
 
 clicked = tk.StringVar()
 clicked.set( "WORLD" )
