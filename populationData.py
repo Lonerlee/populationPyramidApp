@@ -33,5 +33,3 @@ class Population:
     url = self.apiURL + "900/2023/"
     r = requests.get(url)
     return r.json()
-
-pageCountry = getCountryList()
