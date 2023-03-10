@@ -1,3 +1,3 @@
-from populationData import *
-import tkinter as tk
+from showWindow import *
 
+showWindow()
