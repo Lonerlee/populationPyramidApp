@@ -1,42 +1,42 @@
 from populationData import *
 from showData import *
-import matplotlib.pyplot as plt
 import tkinter as tk
 
-def showWindow():
-  pageCountry = 'WORLD'
-  window = tk.Tk()
-  title = tk.Label(text="Pick any country or region here:")
-  title.pack()
-  window.geometry( "600x300" )
+class windowGUI:
+  def __init__(self):
+    self.window = tk.Tk()
+    self.title = tk.Label(text="Pick any country or region here:")
+    self.clicked = tk.StringVar()
+    self.countryList = getCountryList()
+    self.drop = tk.OptionMenu( self.window , self.clicked , *self.countryList )
 
-  clicked = tk.StringVar()
-  clicked.set( "WORLD" )
-  pageCountry = getCountryList()
-  drop = tk.OptionMenu( window , clicked , *pageCountry )
-  drop.pack()
+    self.labelTop = tk.Label( self.window , text = "Previous region basic information:" )
+    self.label = tk.Label( self.window , text = "[NO DATA YET]" )
+    self.labelMale = tk.Label( self.window , text = "[NO DATA YET]" )
+    self.labelFemale = tk.Label( self.window , text = "[NO DATA YET]" )
 
-  labelTop = tk.Label( window , text = "Previous region basic information:" )
-  labelTop.pack()
-  label = tk.Label( window , text = "[NO DATA YET]" )
-  label.pack()
-  labelMale = tk.Label( window , text = "[NO DATA YET]" )
-  labelMale.pack()
-  labelFemale = tk.Label( window , text = "[NO DATA YET]" )
-  labelFemale.pack()
+    self.button = tk.Button( self.window , text = "Click To See Data" , command = self.show )
 
-  def show(): 
-    plt.close('all')
-    pageCountry = clicked.get()
-    createDataVisuals = showData(pageCountry)
-    createDataVisuals.calculations()
-    label.config( text = 'Region name: ' + clicked.get() )
-    labelMale.config( text = createDataVisuals.printMale() )
-    labelFemale.config( text = createDataVisuals.printFemale() )
+  def show(self): 
+    selectedCountry = self.clicked.get()
+    createDataVisuals = showData(selectedCountry, self.countryList)
+    self.label.config( text = 'Region name: ' + self.clicked.get() )
+    self.labelMale.config( text = createDataVisuals.printMale() )
+    self.labelFemale.config( text = createDataVisuals.printFemale() )
     createDataVisuals.start()
 
-  button = tk.Button( window , text = "Click To See Data" , command = show ).pack()
-    
-  window.mainloop()
+  def createWindow(self):
+    self.title.pack()
+    self.window.geometry( "600x300" )
 
-showWindow()
+    self.clicked.set( "WORLD" )
+    self.drop.pack()
+
+    self.labelTop.pack()
+    self.label.pack()
+    self.labelMale.pack()
+    self.labelFemale.pack()
+
+    self.button.pack()
+      
+    self.window.mainloop()

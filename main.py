@@ -1,3 +1,4 @@
 from showWindow import *
 
-showWindow()
+windowShow = windowGUI()
+windowShow.createWindow()
