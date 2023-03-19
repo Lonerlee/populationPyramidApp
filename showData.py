@@ -24,12 +24,12 @@ class showData:
   def printMale(self):
     numberOfMales = self.getGenderQuantity('male')
     percentageOfMales = str(round((100 * numberOfMales/(self.data['population']*1000)), 2))
-    return 'Number of males is ' + str(numberOfMales) + ' in ' + self.countryName.capitalize() + ' and make approx. ' + percentageOfMales + '%' + ' of the population.'
+    return 'Number of males is ' + str(numberOfMales) + ' in ' + self.countryName.capitalize() + ' and makes approx. ' + percentageOfMales + '%' + ' of the population.'
 
   def printFemale(self):
     numberOfFemales = self.getGenderQuantity('female')
     percentageOfFemales = str(round((100 * numberOfFemales/(self.data['population']*1000)), 2))
-    return 'Number of females is ' + str(numberOfFemales) + ' in ' + self.countryName.capitalize() + ' and make approx. ' + percentageOfFemales + '%' + ' of the population.'
+    return 'Number of females is ' + str(numberOfFemales) + ' in ' + self.countryName.capitalize() + ' and makes approx. ' + percentageOfFemales + '%' + ' of the population.'
 
   def printWorld(self):
     fractionPopulation = str(round(float(self.data['population'] / self.population.getWorldData()['population']*100), 2))
